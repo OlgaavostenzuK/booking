@@ -1,0 +1,40 @@
+<html>
+<body>
+
+<!---->
+<!--Форма ввода информации об объекте-->
+<!---->
+<div>
+    <form method="post">
+        <input type="text" name="chooseSubjectName" placeholder="название">
+        <input type="number" name="choosePrice" placeholder="цена">
+        <input type="text" name="chooseRegion" placeholder="район">
+        <input type="text" name="chooseAddress" placeholder="адрес">
+        <input type="number" name="chooseArea" placeholder="площадь">
+        <input type="text" name="chooseInfo" placeholder="характеристики">
+        <select name="chooseMedia">
+            <option>Мультимедиа в наличии</option>
+            <option>Мультимедиа отсутствует</option>
+        </select>
+
+        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
+        <!--            <input type="text" name="choose_station" placeholder="станция">-->
+        <!--            <select name="choose_station" size="10" multiple>-->
+        <!--                <option selected></option>-->
+        <!--                {{#metrostations}}-->
+        <!--                    <option>{{metroStationName}}</option>-->
+        <!--                {{/metrostations}}-->
+        <!--            </select>-->
+        <!--/TODO!!!-->
+
+        <br>
+        <br><button name="publishSubject" type="submit">Опубликовать</button></br>
+        <br>
+        <br><button name="clear" type="reset">Очистить</button></br>
+        <br>
+        <br><button name="backToReestr" type="button"><a href="/">Вернуться к реестру</a></button></br>
+    </form>
+</div>
+</body>
+</html>
+

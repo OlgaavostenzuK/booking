@@ -1,0 +1,57 @@
+<html>
+<body>
+
+<!---->
+<!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
+<!---->
+<br><button name="entry" type="button"><a href="/entry">Вход</a></button></br>
+
+<!---->
+<!--ФИЛЬТРЫ-->
+<!---->
+<div>Фильтры</div>
+<form method="post" action="filter">
+    <input type="number" name="filterPrice" placeholder="цена">
+
+    <input type="text" name="filterRegion" placeholder="район">
+
+    <input type="number" name="filterArea" placeholder="площадь">
+
+    <select name="filterMedia">
+        <option></option>
+        <option>Мультимедиа в наличии</option>
+        <option>Мультимедиа отсутствует</option>
+    </select>
+    <br><button name="filterShow" type="submit">Показать</button></br>
+    <br><button name="filterClear" type="reset">Очистить</button></br>
+</form>
+
+<!---->
+<!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
+<!---->
+<div>Список объектов</div>
+{{#subjects}}
+    <div>
+        <b>{{subjectName}}</b>
+        <b>{{price}}</b>
+        <b>{{region}}</b>
+        <span>{{address}}</span>
+        <span>{{area}}</span>
+        <span>{{info}}</span>
+        <span>{{media}}</span>
+
+        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
+        <!--/TODO!!! -->
+
+    </div>
+{{/subjects}}
+
+<!---->
+<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
+<!---->
+<br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
+
+
+</body>
+</html>
+
