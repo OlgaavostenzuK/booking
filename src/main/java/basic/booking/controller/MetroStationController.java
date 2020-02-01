@@ -1,6 +1,6 @@
 //"src/main/resources/classifiers/metrostations.txt"
 
-package basic.booking;
+package basic.booking.controller;
 
 import basic.booking.domain.MetroStation;
 import basic.booking.domain.Subject;

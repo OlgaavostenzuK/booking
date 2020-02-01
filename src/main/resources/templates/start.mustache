@@ -5,6 +5,7 @@
 <body>
 <div> <!--Форма: обновить станции метро-->
     <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <p>Загрузите список станций метро: <input type="file" name="fileMetroStations">
             <input name="updateMetroStations" type="submit" value="Отправить"></p><br>
     </form>

@@ -1,4 +1,4 @@
-package basic.booking;
+package basic.booking.controller;
 
 import basic.booking.domain.MetroStation;
 import basic.booking.domain.Subject;
@@ -19,7 +19,7 @@ public class ReestrController {
     private SubjectRepo subjectRepo;
 
 
-    @GetMapping
+    @GetMapping("/")
     public String mainReestr(Map<String, Object> model){
         Iterable<Subject> subjects =subjectRepo.findAll();
         model.put("subjects", subjects);
@@ -42,9 +42,9 @@ public class ReestrController {
 //        return "main-reestr";
     }
 
-    @GetMapping("/entry")
-    public String enter(Map<String, Object> model){
-        return "entry";
+    @GetMapping("/login")
+    public String login(Map<String, Object> model){
+        return "login";
     }
 
 
@@ -61,7 +61,7 @@ public class ReestrController {
         }
 
         model.put("subjects", subjects);
-        return "main-reestr";
+        return mainReestr(model);
     }
 
 

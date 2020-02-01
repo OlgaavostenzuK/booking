@@ -1,11 +1,17 @@
 <html>
 <body>
-
+<header>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="Выход"/>
+    </form>
+</header>
 <!---->
 <!--Форма ввода информации об объекте-->
 <!---->
 <div>
     <form method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="chooseSubjectName" placeholder="название">
         <input type="number" name="choosePrice" placeholder="цена">
         <input type="text" name="chooseRegion" placeholder="район">

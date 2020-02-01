@@ -1,16 +1,18 @@
 <html>
 <body>
-
+<header>
 <!---->
 <!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
 <!---->
-<br><button name="entry" type="button"><a href="/entry">Вход</a></button></br>
+<br><button name="login" type="button"><a href="/login">Вход</a></button></br>
+</header>
 
 <!---->
 <!--ФИЛЬТРЫ-->
 <!---->
 <div>Фильтры</div>
 <form method="post" action="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
     <input type="number" name="filterPrice" placeholder="цена">
 
     <input type="text" name="filterRegion" placeholder="район">

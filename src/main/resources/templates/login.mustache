@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+У меня есть учетная запись:
+<form action="/login" method="post">
+    <div><label> Номер телефона : <input type="text" name="username"/> </label></div>
+    <div><label> Пароль: <input type="password" name="password"/> </label></div>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <div><input type="submit" value="Войти"/></div>
+</form>
+<a href="/registration">Зарегистрироваться</a>
+<a href="/">Вернуться к реестру</a>
+</body>
+</html>
