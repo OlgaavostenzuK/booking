@@ -1,9 +1,6 @@
 package basic.booking.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Subject {
@@ -19,11 +16,16 @@ public class Subject {
     private String info;
     private String media;
 
+//    TODO: для проверки - убрать userToControl
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn (name="iduser")
+    private User userToControl;
+
 
     protected Subject() {
     }
 
-    public Subject(String subjectName, Integer price, String region, String address, Integer area, String info, String media) {
+    public Subject(String subjectName, Integer price, String region, String address, Integer area, String info, String media, User userToControl) {
         this.subjectName = subjectName;
         this.price = price;
         this.region = region;
@@ -31,6 +33,11 @@ public class Subject {
         this.area = area;
         this.info = info;
         this.media = media;
+        this.userToControl = userToControl;
+    }
+
+    public String getUserToControlName(){
+        return userToControl != null ? userToControl.getUsername():"<none>";
     }
 
     public Integer getIDSubject() {
@@ -96,5 +103,10 @@ public class Subject {
     public void setMedia(String media) {
         this.media = media;
     }
+
+
+    //    TODO: для проверки - убрать userToControl
+    public User getUserToControl() {return userToControl;}
+    public void setUserToControl(User userToControl) {this.userToControl = userToControl;}
 }
 

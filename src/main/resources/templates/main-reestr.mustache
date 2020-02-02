@@ -35,15 +35,18 @@
 {{#subjects}}
     <div>
         <b>{{subjectName}}</b>
-        <b>{{price}}</b>
-        <b>{{region}}</b>
-        <span>{{address}}</span>
-        <span>{{area}}</span>
-        <span>{{info}}</span>
-        <span>{{media}}</span>
+        <b>цена {{price}},</b>
+        <b>район: {{region}},</b>
+        <span>адрес: {{address}},</span>
+        <span>площадь: {{area}},</span>
+        <span>характеристики: {{info}},</span>
+        <span>{{media}},</span>
 
         <!--TODO!!! СДЕЛАТЬ МЕТРО-->
-        <!--/TODO!!! -->
+
+        <!--/TODO убрать user-->
+        <strong>автор: {{userToControlName}}</strong>
+
 
     </div>
 {{/subjects}}

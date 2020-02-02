@@ -2,9 +2,11 @@ package basic.booking.controller;
 
 import basic.booking.domain.MetroStation;
 import basic.booking.domain.Subject;
+import basic.booking.domain.User;
 import basic.booking.repos.SubjectRepo;
 import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +31,19 @@ public class ReestrController {
     @GetMapping("/add-new-object")
     public String addNewObject(Map<String, Object> model){return "add-new-object";}
 
+
+    //    TODO: для проверки - убрать userToControl
     @PostMapping("/add-new-object")
-    public void add(@RequestParam String chooseSubjectName, @RequestParam Integer choosePrice,
-                      @RequestParam String chooseRegion, @RequestParam String chooseAddress,
-                      @RequestParam Integer chooseArea, @RequestParam String chooseInfo,
-                      @RequestParam String chooseMedia, Map<String, Object> model){
-        Subject subject=new Subject(chooseSubjectName,choosePrice,chooseRegion, chooseAddress, chooseArea, chooseInfo,chooseMedia);
+    public void add(
+            @AuthenticationPrincipal User userToControl,
+            @RequestParam String chooseSubjectName,
+            @RequestParam Integer choosePrice,
+            @RequestParam String chooseRegion,
+            @RequestParam String chooseAddress,
+            @RequestParam Integer chooseArea,
+            @RequestParam String chooseInfo,
+            @RequestParam(required = false) String chooseMedia, Map<String, Object> model){
+        Subject subject=new Subject(chooseSubjectName,choosePrice,chooseRegion, chooseAddress, chooseArea, chooseInfo,chooseMedia, userToControl);
         subjectRepo.save(subject);
 //
 //        Iterable<Subject> subjects =subjectRepo.findAll();
