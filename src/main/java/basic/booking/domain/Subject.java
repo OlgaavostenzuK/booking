@@ -1,6 +1,9 @@
 package basic.booking.domain;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.util.Map;
+import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Subject {
@@ -20,6 +23,17 @@ public class Subject {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name="iduser")
     private User userToControl;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name="user_reserves",
+//            joinColumns = {@JoinColumn(name = "")},
+//            inverseJoinColumns = {})
+//    private Set<Date>;
+
+    @OneToOne(fetch =FetchType.EAGER)
+    @JoinColumn (name = "IDSubject")
+    private Reserve reserve;
 
 
     protected Subject() {

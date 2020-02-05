@@ -1,5 +1,6 @@
 package basic.booking.controller;
 
+import basic.booking.Application;
 import basic.booking.domain.MetroStation;
 import basic.booking.domain.Subject;
 import basic.booking.domain.User;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -25,36 +28,16 @@ public class ReestrController {
     public String mainReestr(Map<String, Object> model){
         Iterable<Subject> subjects =subjectRepo.findAll();
         model.put("subjects", subjects);
+
+
+//        Calendar calendar = Calendar.getInstance();
+//        java.util.Date currentDate = calendar.getTime();
+//        java.sql.Date date = new java.sql.Date(currentDate.getTime());
+//        Application.setSqlDate(date);
+
         return "main-reestr";
     }
 
-    @GetMapping("/add-new-object")
-    public String addNewObject(Map<String, Object> model){return "add-new-object";}
-
-
-    //    TODO: для проверки - убрать userToControl
-    @PostMapping("/add-new-object")
-    public void add(
-            @AuthenticationPrincipal User userToControl,
-            @RequestParam String chooseSubjectName,
-            @RequestParam Integer choosePrice,
-            @RequestParam String chooseRegion,
-            @RequestParam String chooseAddress,
-            @RequestParam Integer chooseArea,
-            @RequestParam String chooseInfo,
-            @RequestParam(required = false) String chooseMedia, Map<String, Object> model){
-        Subject subject=new Subject(chooseSubjectName,choosePrice,chooseRegion, chooseAddress, chooseArea, chooseInfo,chooseMedia, userToControl);
-        subjectRepo.save(subject);
-//
-//        Iterable<Subject> subjects =subjectRepo.findAll();
-//        model.put("subjects", subjects);
-//        return "main-reestr";
-    }
-
-    @GetMapping("/login")
-    public String login(Map<String, Object> model){
-        return "login";
-    }
 
 
 //    TODO Фильтры

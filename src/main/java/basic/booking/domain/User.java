@@ -18,6 +18,10 @@ public class User implements UserDetails {
     private String password;
     private boolean active;
 
+    @OneToOne(fetch =FetchType.EAGER)
+    @JoinColumn (name = "IDUser")
+    private Reserve reserve;
+
     @ElementCollection(targetClass = Role.class,fetch = FetchType.EAGER)
     @CollectionTable(name="user_role", joinColumns = @JoinColumn(name = "iduser"))
     @Enumerated(EnumType.STRING)
