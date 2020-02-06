@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface SubjectRepo extends CrudRepository<Subject, Integer> {
     List<Subject> findByPriceEqualsOrRegionEqualsOrAreaEqualsOrMediaEquals(Integer filterPrice, String filterRegion, Integer filterArea, String filterMedia);
+    List<Subject> findByPriceIsLessThanEqual(Integer filterPrice);
 
     Subject findByIDSubject(Integer IDSubject);
 
