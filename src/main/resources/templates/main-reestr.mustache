@@ -1,0 +1,68 @@
+<html>
+<body>
+<header>
+<!---->
+<!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
+<!---->
+<br><button name="login" type="button"><a href="/login">Вход</a></button></br>
+</header>
+
+<!---->
+<!--ФИЛЬТРЫ-->
+<!---->
+<div>Фильтры</div>
+<form method="get" action="/" >
+    <input type="date" name="wanteddate" placeholder="выберите дату"/>
+
+    <input type="number" name="filterPrice" placeholder="цена не более">
+
+    <input type="text" name="filterRegion" placeholder="район">
+
+    <input type="number" name="filterArea" placeholder="площадь">
+
+    <select name="filterMedia">
+        <option></option>
+        <option>Мультимедиа в наличии</option>
+        <option>Мультимедиа отсутствует</option>
+    </select>
+    <br><button name="filterShow" type="submit">Показать</button></br>
+    <br><button name="filterClear" type="reset">Очистить</button></br>
+</form>
+
+<!---->
+<!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
+<!---->
+<div>Список объектов</div>
+{{#subjects}}
+    <div>
+        <b>{{subjectName}}</b>
+        <b>цена {{price}},</b>
+        <b>район: {{region}},</b>
+        <span>адрес: {{address}},</span>
+        <span>площадь: {{area}},</span>
+        <span>характеристики: {{info}},</span>
+        <span>{{media}},</span>
+
+        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
+
+        <!--/TODO убрать user-->
+        <strong>автор: {{userToControlName}}</strong>
+
+        <form method="get" action="/reservation" >
+            <br><button type="submit"><a href="/reservation/{{IDSubject}}">Забронировать</a><</button></br>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <input type="hidden" name="subjectForReserve" value="{{IDSubject}}" />
+        </form>
+
+    </div>
+{{/subjects}}
+
+<!---->
+<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
+<!---->
+<br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
+
+
+</body>
+</html>
+
