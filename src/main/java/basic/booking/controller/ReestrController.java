@@ -7,6 +7,7 @@ import basic.booking.domain.User;
 import basic.booking.repos.SubjectRepo;
 
 import basic.booking.service.FindByFiltres;
+import basic.booking.service.SetDate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.sun.xml.bind.v2.TODO;
@@ -33,15 +34,23 @@ public class ReestrController {
     @Autowired
     private FindByFiltres findByFiltres;
 
+    @Autowired
+    private SetDate setDate;
+
     @GetMapping("/")
     public String mainReestr(@RequestParam(required = false) Integer filterPrice,
                              @RequestParam(required = false) String filterRegion,
+                             @RequestParam(required = false) Date wanteddate,
 //                             @RequestParam(required = false) Integer filterArea,
 //                             @RequestParam(required = false) String filterMedia,
                              Model model){
 
 
         Iterable<Subject> subjects =subjectRepo.findAll();
+
+        if (wanteddate == null) {
+            wanteddate = setDate.setCurrentDate();
+        }
 
 
         if (filterPrice!=null && !filterPrice.equals("")){
@@ -57,7 +66,8 @@ public class ReestrController {
 
         model.addAttribute("subjects", subjects);
         model.addAttribute("filterPrice", filterPrice);
-//        model.addAttribute("filter", filterRegion);
+        model.addAttribute("wanteddate", wanteddate);
+        model.addAttribute("filterRegion", filterRegion);
 //        model.addAttribute("filter", filterArea);
 //        model.addAttribute("filter", filterMedia);
 

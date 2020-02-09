@@ -12,11 +12,11 @@
 <!---->
 <div>Фильтры</div>
 <form method="get" action="/" >
-    <input type="date" name="wanteddate" placeholder="выберите дату"/>
+        <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
 
-    <input type="number" name="filterPrice" placeholder="цена не более">
+    <input type="number" name="filterPrice" placeholder="цена не более" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}">
 
-    <input type="text" name="filterRegion" placeholder="район">
+    <input type="text" name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
 
     <input type="number" name="filterArea" placeholder="площадь">
 
@@ -26,7 +26,7 @@
         <option>Мультимедиа отсутствует</option>
     </select>
     <br><button name="filterShow" type="submit">Показать</button></br>
-    <br><button name="filterClear" type="reset">Очистить</button></br>
+<!--    <br><button name="filterClear" type="reset">Очистить</button></br>-->
 </form>
 
 <!---->
