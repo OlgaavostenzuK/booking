@@ -3,17 +3,16 @@
 package basic.booking.controller;
 
 import basic.booking.domain.MetroStation;
-import basic.booking.domain.Subject;
 import basic.booking.repos.MetroStationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.util.*;
+import java.util.Map;
 
 @Controller
 public class MetroStationController {
@@ -54,8 +53,3 @@ public class MetroStationController {
         }
     }
 }
-
-
-
-//    Iterable<MetroStation> metroStations = metroStationRepo.findAll();
-//            model.put("metrostations", metroStations);

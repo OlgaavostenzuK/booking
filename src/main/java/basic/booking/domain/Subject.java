@@ -24,12 +24,6 @@ public class Subject {
     @JoinColumn (name="iduser")
     private User userToControl;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name="user_reserves",
-//            joinColumns = {@JoinColumn(name = "")},
-//            inverseJoinColumns = {})
-//    private Set<Date>;
 
     @OneToOne(fetch =FetchType.EAGER)
     @JoinColumn (name = "IDSubject")

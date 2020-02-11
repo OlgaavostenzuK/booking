@@ -1,7 +1,6 @@
 package basic.booking.controller;
 
 import basic.booking.domain.Reserve;
-import basic.booking.domain.Subject;
 import basic.booking.domain.User;
 import basic.booking.repos.ReserveRepo;
 import basic.booking.repos.SubjectRepo;
@@ -27,17 +26,9 @@ public class ReservationController {
     private Integer subjectForReserve;
 
 
-//    @PostMapping("subjectForReserve")
-//    public String defineSubjectForReserve(@RequestParam Integer subjectForReserve){
-//        this.subjectForReserve=subjectRepo.findByIDSubject(subjectForReserve);
-//        return ("/reservation");
-//    }
-
     @GetMapping("/reservation/{IDSubjectForReserve}")
     public String reserveSubject(
             @PathVariable Integer IDSubjectForReserve, Map<String, Integer> model){
-//        Reserve reserve=new Reserve(subjectRepo.findByIDSubject(subjectForReserve));
-//        reserveRepo.save(reserve);
         model.put("IDSubjectForReserve",IDSubjectForReserve);
         return "reservation";
     }
@@ -58,19 +49,8 @@ public class ReservationController {
     }
 
 
-//    @PostMapping("submit-reserv")
-//    public void reserveSubject(
-//            @RequestParam Date wanteddate, @RequestParam Integer IDSubjectForReserve, @AuthenticationPrincipal User user, Map<String, Object> model){
-//        Reserve reserve=new Reserve(wanteddate, subjectRepo.findByIDSubject(IDSubjectForReserve), user);
-//        reserveRepo.save(reserve);
-//
-//    }
-
-
     @GetMapping("/reservation")
     public String addNewObject(){return "reservation";}
-
-
 
 }
 

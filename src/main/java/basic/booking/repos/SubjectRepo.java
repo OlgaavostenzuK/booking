@@ -1,16 +1,27 @@
 package basic.booking.repos;
 
 import basic.booking.domain.Subject;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 
-public interface SubjectRepo extends CrudRepository<Subject, Integer>, QuerydslPredicateExecutor<Subject> {
-    List<Subject> findByPriceIsLessThanEqual(Integer filterPrice);
-
+public interface SubjectRepo extends CrudRepository<Subject, Integer>, JpaRepository<Subject, Integer>, QuerydslPredicateExecutor<Subject> {
     Subject findByIDSubject(Integer idSubject);
+
+    @Query("select s from Subject s where s.region = ?1 and s.price <= ?2")
+    List<Subject> queryByRegionAAndPrice(String region, Integer price);
+
+    @Query("select s from Subject s where s.region = ?1")
+    List<Subject> queryByRegion(String region);
+
+    @Query("select s from Subject s where s.price <= ?1")
+    List<Subject> queryByPrice(Integer price);
 
 }
 

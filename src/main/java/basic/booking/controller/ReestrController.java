@@ -52,6 +52,8 @@ public class ReestrController {
             wanteddate = setDate.setCurrentDate();
         }
 
+        findByFiltres.setWanteddateSelected(wanteddate);
+
 
         if (filterPrice!=null && !filterPrice.equals("")){
             findByFiltres.setPriceSelected(filterPrice);
@@ -68,15 +70,6 @@ public class ReestrController {
         model.addAttribute("filterPrice", filterPrice);
         model.addAttribute("wanteddate", wanteddate);
         model.addAttribute("filterRegion", filterRegion);
-//        model.addAttribute("filter", filterArea);
-//        model.addAttribute("filter", filterMedia);
-
-
-// TODO дата в фильтре календаря
-//        Calendar calendar = Calendar.getInstance();
-//        java.util.Date currentDate = calendar.getTime();
-//        java.sql.Date date = new java.sql.Date(currentDate.getTime());
-//        Application.setSqlDate(date);
 
         findByFiltres.clearFilters();
         return "main-reestr";

@@ -52,4 +52,12 @@ public class Reserve {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
 }
