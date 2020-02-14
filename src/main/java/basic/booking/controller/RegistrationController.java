@@ -26,20 +26,45 @@ public class RegistrationController {
         return "registration";
     }
 
+    @GetMapping("/sorry-admin")
+    public String sorryAdmin(){
+        return "sorry-admin";
+    }
+
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model){
         User userFromDB = userRepo.findByUsername(user.getUsername());
 
         if(userFromDB != null){
-            model.put("message", "Пользователь с такими данными зарегистрирован!");
+            model.put("message", "Пользователь с такими данными не зарегистрирован!");
             return "registration";
         }
 
-        user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
 
         return "redirect:/login";
     }
+
+    @GetMapping("/admin")
+    public String registrationAdmin(){
+        return "admin";
+    }
+
+    @PostMapping("/admin")
+    public String setAdmin(User user, Map<String, Object> model){
+
+
+        if (userRepo.findAllByRoles(Role.ADMIN).size()==0) {
+
+            user.setRoles(Collections.singleton(Role.ADMIN));
+            userRepo.save(user);
+            return "redirect:/login";
+
+        } else {
+            return "redirect:/sorry-admin";
+        }
+    }
+
 
 }

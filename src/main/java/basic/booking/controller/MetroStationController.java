@@ -19,37 +19,37 @@ public class MetroStationController {
     @Autowired
     private MetroStationRepo metroStationRepo;
 
-    @GetMapping("/start")
-    public String start(Map<String, Object> model){
-        return "start";
-    }
+//    @GetMapping("/start")
+//    public String start(Map<String, Object> model){
+//        return "start";
+//    }
+//
+//    @PostMapping("/start")
+//    public void updateMetroStations(@RequestParam MultipartFile fileMetroStations, Map<String, Object> model) {
 
-    @PostMapping("/start")
-    public void updateMetroStations(@RequestParam MultipartFile fileMetroStations, Map<String, Object> model) {
-
-        //читаем данные из файла
-        FileInputStream fi = null;
-        try {
-            fi = new FileInputStream((File) fileMetroStations);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        BufferedReader br = new BufferedReader(new InputStreamReader(fi));
-
-        //Создаем временную переменную - строку
-        String getLineFromFile;
-
-        //В цикле читаем строки до тех пор, пока не дойдем до последней строки
-        while (true) {
-            try {
-                if (!((getLineFromFile = br.readLine()) != null)) {
-                    break;
-                }
-                MetroStation metroStation = new MetroStation(getLineFromFile);
-                metroStationRepo.save(metroStation);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//        //читаем данные из файла
+//        FileInputStream fi = null;
+//        try {
+//            fi = new FileInputStream((File) fileMetroStations);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        BufferedReader br = new BufferedReader(new InputStreamReader(fi));
+//
+//        //Создаем временную переменную - строку
+//        String getLineFromFile;
+//
+//        //В цикле читаем строки до тех пор, пока не дойдем до последней строки
+//        while (true) {
+//            try {
+//                if (!((getLineFromFile = br.readLine()) != null)) {
+//                    break;
+//                }
+//                MetroStation metroStation = new MetroStation(getLineFromFile);
+//                metroStationRepo.save(metroStation);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

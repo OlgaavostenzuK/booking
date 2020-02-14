@@ -1,0 +1,22 @@
+<html>
+<body>
+<div>Список пользователей</div>
+<table>
+    <thead>
+    <tr>
+        <th>Телефон</th>
+        <th>Роль</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#userList}}
+        <tr>
+            <th>{{username}}</th>
+            <th>{{roles}}</th>
+        </tr>
+    {{/userList}}
+    </tbody>
+</table>
+</body>
+</html>
+

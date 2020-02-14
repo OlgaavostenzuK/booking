@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
 @Entity
@@ -13,10 +14,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer IDUser;
-
     private String username;
     private String password;
-    private boolean active;
+
+    public User() {
+    }
 
     @OneToOne(fetch =FetchType.EAGER)
     @JoinColumn (name = "IDUser")
@@ -54,7 +56,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isActive();
+        return true;
     }
 
     public void setUsername(String username) {this.username = username;}
@@ -70,14 +72,6 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public Set<Role> getRoles() {

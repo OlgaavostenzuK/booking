@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+Создать учетную запись администратора:
+<form action="/admin" method="post">
+    <div><label> Номер телефона : <input type="text" name="username"/> </label></div>
+    <div><label> Пароль: <input type="password" name="password"/> </label></div>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <div><input type="submit" value="Зарегистрироваться"/></div>
+</form>
+<a href="/">Вернуться к реестру</a>
+</body>
+</html>
+
+<!--форма для загрузки-->
+<!--<form method="post" enctype="multipart/form-data">-->
+<!--    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>-->
+<!--    <p>Загрузите список станций метро: <input type="file" name="fileMetroStations">-->
+<!--        <input name="updateMetroStations" type="submit" value="Отправить"></p><br>-->
+<!--</form>-->

@@ -16,14 +16,11 @@
 
     <input type="number" name="filterPrice" placeholder="цена не более" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}">
 
-    <input type="text" name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
-
-    <input type="number" name="filterArea" placeholder="площадь">
-
-    <select name="filterMedia">
+    <select name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
         <option></option>
-        <option>Мультимедиа в наличии</option>
-        <option>Мультимедиа отсутствует</option>
+        {{#listregions}}
+                <option{{listregions}}</option>
+        {{/listregions}}
     </select>
     <br><button name="filterShow" type="submit">Показать</button></br>
 <!--    <br><button name="filterClear" type="reset">Очистить</button></br>-->
