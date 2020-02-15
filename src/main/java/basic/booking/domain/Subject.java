@@ -18,6 +18,7 @@ public class Subject {
     private Integer area;
     private String info;
     private String media;
+    private String filename;
 
 //    TODO: для проверки - убрать userToControl
     @ManyToOne(fetch = FetchType.EAGER)
@@ -33,7 +34,7 @@ public class Subject {
     protected Subject() {
     }
 
-    public Subject(String subjectName, Integer price, String region, String address, Integer area, String info, String media, User userToControl) {
+    public Subject(String subjectName, Integer price, String region, String address, Integer area, String info, String media) {
         this.subjectName = subjectName;
         this.price = price;
         this.region = region;
@@ -41,7 +42,7 @@ public class Subject {
         this.area = area;
         this.info = info;
         this.media = media;
-        this.userToControl = userToControl;
+
     }
 
     public String getUserToControlName(){
@@ -112,6 +113,21 @@ public class Subject {
         this.media = media;
     }
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public Reserve getReserve() {
+        return reserve;
+    }
+
+    public void setReserve(Reserve reserve) {
+        this.reserve = reserve;
+    }
 
     //    TODO: для проверки - убрать userToControl
     public User getUserToControl() {return userToControl;}

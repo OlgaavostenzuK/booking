@@ -1,0 +1,42 @@
+<html>
+<body>
+
+<!---->
+<!--ФИЛЬТРЫ-->
+<!---->
+<div>Фильтры</div>
+<form method="get" action="/admin-reestr" >
+        <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
+        <br><button name="filterShow" type="submit">Показать</button></br>
+</form>
+
+<!---->
+<!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
+<!---->
+<div>Список объектов</div>
+{{#reserves}}
+    <div>
+        <b>{{subject.subjectName}}</b>
+        <b>цена: {{subject.price}},</b>
+        <b>{{subject.region}},</b>
+        <span>адрес: {{subject.address}},</span>
+        <span>площадь: {{subject.area}},</span>
+        <span>характеристики: {{subject.info}},</span>
+        <span>{{subject.media}}</span>
+        <b>забронировал пользователь:  {{user.username}}</b>
+
+        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
+
+
+    </div>
+{{/reserves}}
+
+<!---->
+<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
+<!---->
+<br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
+
+
+</body>
+</html>
+

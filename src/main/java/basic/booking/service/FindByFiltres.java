@@ -49,13 +49,26 @@ public class FindByFiltres {
 
     public Iterable<Subject> queryByDate(Date date, List<Subject> foundedSubjects){
         List<Subject> subjects=foundedSubjects;
-        Iterable<Reserve> reserves = reserveRepo.reserves(wanteddate); //весь резерв на выбранную дату
+        Iterable<Reserve> reserves = reserveRepo.reserves(date); //весь резерв на выбранную дату
 
         for (Reserve reserve:reserves) {
             subjects.remove(reserve.getSubject());
         }
         return subjects;
     }
+
+    public Iterable<Subject> reservedOnDate(Date date){
+        List<Subject> subjects=new ArrayList<>();
+
+        Iterable<Reserve> reserves = reserveRepo.reserves(date); //весь резерв на выбранную дату
+
+        for (Reserve reserve:reserves) {
+            subjects.add(reserve.getSubject());
+        }
+        return subjects;
+    }
+
+
 
 
     public Iterable<Subject> findBySelected() {

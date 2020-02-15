@@ -40,28 +40,18 @@ public class ReestrController {
     private WorkClassifierFile workClassifierFile;
 
 
-    private static boolean isAdminAct = false;
-
-
     Iterable<String> regions;
 
     @GetMapping("/")
     public String mainReestr(@RequestParam(required = false) Integer filterPrice,
                              @RequestParam(required = false) String filterRegion,
                              @RequestParam(required = false) Date wanteddate,
-
-
-//                             @RequestParam(required = false) Integer filterArea,
-//                             @RequestParam(required = false) String filterMedia,
                              Model model) {
 
 
         Iterable<Subject> subjects = subjectRepo.findAll();
 
-        if (wanteddate == null) {
-            wanteddate = setDate.setCurrentDate();
-        }
-
+        if (wanteddate == null) {wanteddate = setDate.setCurrentDate();}
         findByFiltres.setWanteddateSelected(wanteddate);
 
 
@@ -81,8 +71,8 @@ public class ReestrController {
         model.addAttribute("wanteddate", wanteddate);
         model.addAttribute("filterRegion", filterRegion);
 
-        Iterable<String> listregions = this.regions;
-        model.addAttribute("listregions", listregions);
+//        Iterable<String> listregions = this.regions;
+//        model.addAttribute("listregions", listregions);
 
         findByFiltres.clearFilters();
         return "main-reestr";

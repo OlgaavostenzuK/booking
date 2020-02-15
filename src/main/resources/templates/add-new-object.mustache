@@ -10,7 +10,7 @@
 <!--Форма ввода информации об объекте-->
 <!---->
 <div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="chooseSubjectName" placeholder="название">
         <input type="number" name="choosePrice" placeholder="цена">
@@ -41,6 +41,11 @@
             <option>Мультимедиа в наличии</option>
             <option>Мультимедиа отсутствует</option>
         </select>
+        <input type="file" name="file" placeholder="фото">
+        <div>
+
+        </div>
+
 
         <!--TODO!!! СДЕЛАТЬ МЕТРО-->
         <!--            <input type="text" name="choose_station" placeholder="станция">-->

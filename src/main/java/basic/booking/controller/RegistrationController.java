@@ -36,7 +36,7 @@ public class RegistrationController {
         User userFromDB = userRepo.findByUsername(user.getUsername());
 
         if(userFromDB != null){
-            model.put("message", "Пользователь с такими данными не зарегистрирован!");
+            model.put("message", "Пользователь с такими данными уже зарегистрирован!");
             return "registration";
         }
 

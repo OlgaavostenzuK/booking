@@ -1,10 +1,14 @@
 <html>
+<head>
+    <meta charset="utf-8">
+</head>
 <body>
 <header>
-<!---->
-<!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
-<!---->
-<br><button name="login" type="button"><a href="/login">Вход</a></button></br>
+
+    <!---->
+    <!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
+    <!---->
+    <br><button name="login" type="button"><a href="/login">Вход</a></button></br>
 </header>
 
 <!---->
@@ -12,11 +16,12 @@
 <!---->
 <div>Фильтры</div>
 <form method="get" action="/" >
-        <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
+    <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
 
     <input type="number" name="filterPrice" placeholder="цена не более" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}">
 
     <select name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
+        <option></option>
         <option>Адмиралтейский район</option>
         <option>Василеостровский район</option>
         <option>Выборгский район</option>
@@ -36,12 +41,8 @@
         <option>Фрунзенский район</option>
         <option>Центральный район</option>
     </select>
-
-
     <br><button name="filterShow" type="submit">Показать</button></br>
-<!--    <br><button name="filterClear" type="reset">Очистить</button></br>-->
 </form>
-
 <!---->
 <!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
 <!---->
@@ -54,12 +55,11 @@
         <span>адрес: {{address}},</span>
         <span>площадь: {{area}},</span>
         <span>характеристики: {{info}},</span>
-        <span>{{media}},</span>
-
-        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
-
-        <!--/TODO убрать user-->
-        <strong>автор: {{userToControlName}}</strong>
+        <span>{{media}}</span>
+        <div>
+<!--            <img src="/img/{{filename}}" alt="фото">-->
+            <p><img src="{{filename}}"  width="40" height="30" alt="{{subjectName}}"></p>
+        </div>
 
         <form method="get" action="/reservation" >
             <br><button type="submit"><a href="/reservation/{{IDSubject}}">Забронировать</a><</button></br>
@@ -69,6 +69,8 @@
 
     </div>
 {{/subjects}}
+
+<!--<img src="../../../uploads/temp.png">-->
 
 <!---->
 <!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
