@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -40,13 +41,15 @@ public class ReservationController {
             @AuthenticationPrincipal User user,
             Map<String, Object> model){
 
+        List<Reserve> res = reserveRepo.tryReserves(wanteddate,subjectRepo.findByIDSubject(IDSubjectForReserve));
 
-        Date date;
-
-        Reserve reserve=new Reserve(wanteddate, subjectRepo.findByIDSubject(IDSubjectForReserve), user);
-        reserveRepo.save(reserve);
-
-       return "redirect:/";
+        if (res.size()==0) {
+            Reserve reserve = new Reserve(wanteddate, subjectRepo.findByIDSubject(IDSubjectForReserve), user);
+            reserveRepo.save(reserve);
+            return "reserve-go";
+        } else {
+            return "reserve-no";
+        }
 
     }
 

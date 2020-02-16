@@ -1,15 +1,19 @@
 <html>
 <body>
-
+<!---->
+<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
+<!---->
+<br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
+<br> </br>
 <!---->
 <!--ФИЛЬТРЫ-->
 <!---->
-<div>Фильтры</div>
+<div>Показать бронирования</div>
 <form method="get" action="/admin-reestr" >
         <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
-        <br><button name="filterShow" type="submit">Показать</button></br>
+        <button name="filterShow" type="submit">Показать</button>
 </form>
-
+<br> </br>
 <!---->
 <!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
 <!---->
@@ -25,18 +29,10 @@
         <span>{{subject.media}}</span>
         <b>забронировал пользователь:  {{user.username}}</b>
 
-        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
 
 
     </div>
 {{/reserves}}
-
-<!---->
-<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
-<!---->
-<br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
-
-
 </body>
 </html>
 

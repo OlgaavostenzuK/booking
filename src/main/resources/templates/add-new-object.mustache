@@ -9,12 +9,12 @@
 <!---->
 <!--Форма ввода информации об объекте-->
 <!---->
-<div>
+<div>Информация об объекте:
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-        <input type="text" name="chooseSubjectName" placeholder="название">
-        <input type="number" name="choosePrice" placeholder="цена">
-        <select name="chooseRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
+        <br><input type="text" name="chooseSubjectName" placeholder="название"></br>
+        <br><input type="number" name="choosePrice" placeholder="цена"></br>
+        <br><select name="chooseRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
             <option>Адмиралтейский район</option>
             <option>Василеостровский район</option>
             <option>Выборгский район</option>
@@ -33,35 +33,22 @@
             <option>Пушкинский район</option>
             <option>Фрунзенский район</option>
             <option>Центральный район</option>
-        </select>
-        <input type="text" name="chooseAddress" placeholder="адрес">
-        <input type="number" name="chooseArea" placeholder="площадь">
-        <input type="text" name="chooseInfo" placeholder="характеристики">
-        <select name="chooseMedia">
+        </select></br>
+        <br><input type="text" name="chooseAddress" placeholder="адрес"></br>
+        <br><input type="number" name="chooseArea" placeholder="площадь"></br>
+        <br><input type="text" name="chooseInfo" placeholder="характеристики"></br>
+        <br><select name="chooseMedia">
             <option>мультимедиа в наличии</option>
             <option>мультимедиа отсутствует</option>
-        </select>
-        <input type="file" name="file" placeholder="фото">
-        <div>
-
-        </div>
-
-
-        <!--TODO!!! СДЕЛАТЬ МЕТРО-->
-        <!--            <input type="text" name="choose_station" placeholder="станция">-->
-        <!--            <select name="choose_station" size="10" multiple>-->
-        <!--                <option selected></option>-->
-        <!--                {{#metrostations}}-->
-        <!--                    <option>{{metroStationName}}</option>-->
-        <!--                {{/metrostations}}-->
-        <!--            </select>-->
-        <!--/TODO!!!-->
+        </select></br>
+        <br><input type="file" name="file" placeholder="фото"></br>
 
         <br>
-        <br><button name="publishSubject" type="submit">Опубликовать</button></br>
-        <br>
-        <br><button name="clear" type="reset">Очистить</button></br>
-        <br>
+        <button name="publishSubject" type="submit">Опубликовать</button>
+
+        <button name="clear" type="reset">Очистить</button>
+        </br>
+        <br></br>
         <br><button name="backToReestr" type="button"><a href="/">Вернуться к реестру</a></button></br>
     </form>
 </div>
