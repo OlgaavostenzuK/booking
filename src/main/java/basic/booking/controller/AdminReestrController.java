@@ -47,13 +47,6 @@ public class AdminReestrController {
 
         Iterable<Reserve> reserves =reserveRepo.reserves(wanteddate);
 
-
-//        Iterable<Subject> subjects = subjectRepo.findAll();
-
-//        findByFiltres.setWanteddateSelected(wanteddate);
-//        subjects = findByFiltres.reservedOnDate(wanteddate);
-//        model.addAttribute("subjects", subjects);
-
         model.addAttribute("reserves", reserves);
         model.addAttribute("wanteddate", wanteddate);
 

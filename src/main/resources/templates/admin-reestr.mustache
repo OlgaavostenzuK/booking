@@ -1,9 +1,11 @@
 <html>
 <body>
-<!---->
-<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
-<!---->
-<br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <input type="submit" value="Выход"/>
+</form>
+<br><a href="/add-new-object">Добавить новый объект</a></br>
+<br><a href="/user">Просмотреть список пользователей</a></br>
 <br> </br>
 <!---->
 <!--ФИЛЬТРЫ-->
@@ -17,22 +19,47 @@
 <!---->
 <!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
 <!---->
-<div>Список объектов</div>
-{{#reserves}}
-    <div>
-        <b>{{subject.subjectName}}</b>
-        <b>цена: {{subject.price}},</b>
-        <b>{{subject.region}},</b>
-        <span>адрес: {{subject.address}},</span>
-        <span>площадь: {{subject.area}},</span>
-        <span>характеристики: {{subject.info}},</span>
-        <span>{{subject.media}}</span>
-        <b>забронировал пользователь:  {{user.username}}</b>
 
 
 
-    </div>
-{{/reserves}}
+
+<div>Список доступных объектов на выбранную дату:</div>
+<br>
+<table>
+    <tbody>
+    {{#reserves}}
+        <tr>
+            <th>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <p><img src="{{subject.filename}}"  width="160" height="100" alt="{{subject.subjectName}}"></p>
+                            </th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th>
+            <th>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr><th align="left" vertical-align="top">{{subject.subjectName}}</th></tr>
+                        <tr><th align="left" vertical-align="top"></th></tr>
+                        <tr><th align="left" vertical-align="top">цена: {{subject.price}}</th></tr>
+                        <tr><th align="left" vertical-align="top">адрес: {{subject.address}}</th></tr>
+                        <tr><th align="left" vertical-align="top">район: {{subject.region}}</th></tr>
+                        <tr><th align="left" vertical-align="top">забронировал пользователь:  {{user.username}}</th></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th>
+        </tr>
+    {{/reserves}}
+    </tbody>
+</table>
 </body>
 </html>
 

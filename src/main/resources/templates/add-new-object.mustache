@@ -1,11 +1,5 @@
 <html>
 <body>
-<header>
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-        <input type="submit" value="Выход"/>
-    </form>
-</header>
 <!---->
 <!--Форма ввода информации об объекте-->
 <!---->
@@ -49,7 +43,8 @@
         <button name="clear" type="reset">Очистить</button>
         </br>
         <br></br>
-        <br><button name="backToReestr" type="button"><a href="/">Вернуться к реестру</a></button></br>
+        <br><a href="/admin-reestr">Вернуться в ЛК администратора</a></br>
+        <br><a href="/">Перейти к общему реестру</a></br>
     </form>
 </div>
 </body>
