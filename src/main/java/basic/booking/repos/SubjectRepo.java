@@ -6,12 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
-import java.sql.Date;
 import java.util.List;
-import java.util.Set;
 
 
-public interface SubjectRepo extends CrudRepository<Subject, Integer>, JpaRepository<Subject, Integer>, QuerydslPredicateExecutor<Subject> {
+public interface SubjectRepo extends CrudRepository<Subject, Integer>, JpaRepository<Subject, Integer>{
     Subject findByIDSubject(Integer idSubject);
 
     @Query("select s from Subject s where s.region = ?1 and s.price <= ?2")

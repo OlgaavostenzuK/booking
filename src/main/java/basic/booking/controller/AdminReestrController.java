@@ -1,13 +1,11 @@
 package basic.booking.controller;
 
 import basic.booking.domain.Reserve;
-import basic.booking.domain.Subject;
 import basic.booking.repos.ReserveRepo;
 import basic.booking.repos.SubjectRepo;
 import basic.booking.repos.UserRepo;
 import basic.booking.service.FindByFiltres;
 import basic.booking.service.SetDate;
-import basic.booking.service.WorkClassifierFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,12 +19,6 @@ import java.sql.Date;
 @Controller
 public class AdminReestrController {
     @Autowired
-    private SubjectRepo subjectRepo;
-
-    @Autowired
-    private UserRepo userRepo;
-
-    @Autowired
     ReserveRepo reserveRepo;
 
     @Autowired
@@ -34,9 +26,6 @@ public class AdminReestrController {
 
     @Autowired
     private SetDate setDate;
-
-
-    Iterable<String> regions;
 
     @GetMapping("/admin-reestr")
     public String mainReestr(@RequestParam(required = false) Date wanteddate,

@@ -1,11 +1,9 @@
 package basic.booking.domain;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.Map;
-import java.util.Set;
 
-@Entity // This tells Hibernate to make a table out of this class
+
+@Entity
 public class Subject {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,11 +17,6 @@ public class Subject {
     private String info;
     private String media;
     private String filename;
-
-//    TODO: для проверки - убрать userToControl
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn (name="iduser")
-    private User userToControl;
 
 
     @OneToOne(fetch =FetchType.EAGER)
@@ -43,10 +36,6 @@ public class Subject {
         this.info = info;
         this.media = media;
 
-    }
-
-    public String getUserToControlName(){
-        return userToControl != null ? userToControl.getUsername():"<none>";
     }
 
     public Integer getIDSubject() {
@@ -129,8 +118,5 @@ public class Subject {
         this.reserve = reserve;
     }
 
-    //    TODO: для проверки - убрать userToControl
-    public User getUserToControl() {return userToControl;}
-    public void setUserToControl(User userToControl) {this.userToControl = userToControl;}
 }
 

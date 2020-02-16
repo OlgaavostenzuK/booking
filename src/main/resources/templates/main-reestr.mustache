@@ -64,7 +64,7 @@
                             <th>
                                 <div>
                                     <form method="get" action="/reservation" >
-                                        <br><button type="submit"><a href="/reservation/{{IDSubject}}">Забронировать</a><</button></br>
+                                        <br><a href="/reservation/{{IDSubject}}">Забронировать</a></br>
                                         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
                                         <input type="hidden" name="subjectForReserve" value="{{IDSubject}}" />
                                     </form>

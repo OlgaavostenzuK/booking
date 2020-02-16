@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @PreAuthorize("hasAuthority('ADMIN')")
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/userList")
 public class UserController {
     @Autowired
     UserRepo userRepo;
@@ -20,7 +20,4 @@ public class UserController {
         model.addAttribute("userList", userRepo.findAll());
         return "userList";
     }
-
-
-
 }

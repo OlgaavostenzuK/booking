@@ -71,6 +71,4 @@ public class RegistrationController {
             return "redirect:/sorry-admin";
         }
     }
-
-
 }

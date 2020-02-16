@@ -9,7 +9,6 @@ public class Reserve {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer IDReserve;
 
-
     private Date date;
 
     @OneToOne(fetch =FetchType.EAGER)
@@ -53,11 +52,7 @@ public class Reserve {
         this.date = date;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
+    public Subject getSubject() { return subject; }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
+    public void setSubject(Subject subject) { this.subject = subject; }
 }

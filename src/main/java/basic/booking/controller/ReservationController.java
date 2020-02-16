@@ -24,9 +24,6 @@ public class ReservationController {
     @Autowired
     private SubjectRepo subjectRepo;
 
-    private Integer subjectForReserve;
-
-
     @GetMapping("/reservation/{IDSubjectForReserve}")
     public String reserveSubject(
             @PathVariable Integer IDSubjectForReserve, Map<String, Integer> model){
@@ -52,7 +49,6 @@ public class ReservationController {
         }
 
     }
-
 
     @GetMapping("/reservation")
     public String addNewObject(){return "reservation";}

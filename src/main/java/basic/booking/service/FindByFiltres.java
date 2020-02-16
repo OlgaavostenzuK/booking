@@ -1,16 +1,10 @@
 package basic.booking.service;
 
-import basic.booking.domain.QSubject;
 import basic.booking.domain.Reserve;
 import basic.booking.domain.Subject;
 import basic.booking.repos.ReserveRepo;
 import basic.booking.repos.SubjectRepo;
-import com.querydsl.core.types.OrderSpecifier;
-import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -68,7 +62,6 @@ public class FindByFiltres {
 
 
 
-
     public Iterable<Subject> findBySelected() {
 
         if(wanteddate!=null & filterRegion==null & filterPrice==null) { //только дата
@@ -95,8 +88,5 @@ public class FindByFiltres {
 
         }else  {return  subjectRepo.findAll();}
     }
-
-
-
 
 }

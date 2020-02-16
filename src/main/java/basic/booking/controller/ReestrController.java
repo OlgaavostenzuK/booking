@@ -1,25 +1,19 @@
 package basic.booking.controller;
 
-import basic.booking.domain.Role;
 import basic.booking.domain.Subject;
-import basic.booking.domain.User;
 import basic.booking.repos.SubjectRepo;
 
 import basic.booking.repos.UserRepo;
 import basic.booking.service.FindByFiltres;
 import basic.booking.service.SetDate;
-import basic.booking.service.WorkClassifierFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.sql.Date;
-import java.util.Collections;
-import java.util.Map;
 
 @Controller
 public class ReestrController {
@@ -27,20 +21,10 @@ public class ReestrController {
     private SubjectRepo subjectRepo;
 
     @Autowired
-    private UserRepo userRepo;
-
-
-    @Autowired
     private FindByFiltres findByFiltres;
 
     @Autowired
     private SetDate setDate;
-
-    @Autowired
-    private WorkClassifierFile workClassifierFile;
-
-
-    Iterable<String> regions;
 
     @GetMapping("/")
     public String mainReestr(@RequestParam(required = false) Integer filterPrice,
@@ -71,9 +55,6 @@ public class ReestrController {
         model.addAttribute("wanteddate", wanteddate);
         model.addAttribute("filterRegion", filterRegion);
 
-//        Iterable<String> listregions = this.regions;
-//        model.addAttribute("listregions", listregions);
-
         findByFiltres.clearFilters();
         return "main-reestr";
     }
@@ -84,9 +65,6 @@ public class ReestrController {
     }
 
 }
-
-//        List<String> listRegions=workClassifierFile.readFile("src/main/resources/classifiers/metrostations.txt");
-//        this.regions=listRegions;
 
 
 

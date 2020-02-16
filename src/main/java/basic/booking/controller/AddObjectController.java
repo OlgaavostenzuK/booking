@@ -1,12 +1,10 @@
 package basic.booking.controller;
 
 import basic.booking.domain.Subject;
-import basic.booking.domain.User;
 import basic.booking.repos.SubjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +28,6 @@ public class AddObjectController {
     private String uploadPath;
 
 
-    //    TODO: для проверки - убрать userToControl
     @PostMapping("/add-new-object")
     public void add(
             @RequestParam String chooseSubjectName,
