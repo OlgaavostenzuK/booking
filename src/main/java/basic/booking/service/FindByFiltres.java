@@ -24,8 +24,6 @@ public class FindByFiltres {
     @Autowired
     private ReserveRepo reserveRepo;
 
-    QSubject qSubject=QSubject.subject;
-
     private Date wanteddate=null;
     public void setWanteddateSelected(Date wanteddate) {
         this.wanteddate = wanteddate;
