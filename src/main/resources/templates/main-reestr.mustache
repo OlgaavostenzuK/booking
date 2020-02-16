@@ -3,24 +3,21 @@
     <meta charset="utf-8">
 </head>
 <body>
-<header>
-
-    <!---->
-    <!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
-    <!---->
-    <br><button name="login" type="button"><a href="/login">Вход</a></button></br>
-</header>
-
+<!---->
+<!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
+<!---->
+<br><button name="login" type="button"><a href="/login">Вход</a></button></br>
+<br>
 <!---->
 <!--ФИЛЬТРЫ-->
 <!---->
-<div>Фильтры</div>
 <form method="get" action="/" >
-    <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
-
-    <input type="number" name="filterPrice" placeholder="цена не более" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}">
-
-    <select name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
+<div>
+    Выберите нужную дату: <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
+    <button name="filterShow" type="submit">Показать</button>
+</div>
+    <br>Цена не более:<input type="number" name="filterPrice" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}"></br>
+    <br>Район: <select name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">район:
         <option></option>
         <option>Адмиралтейский район</option>
         <option>Василеостровский район</option>
@@ -40,44 +37,66 @@
         <option>Пушкинский район</option>
         <option>Фрунзенский район</option>
         <option>Центральный район</option>
-    </select>
-    <br><button name="filterShow" type="submit">Показать</button></br>
+    </select></br>
 </form>
+
 <!---->
 <!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
 <!---->
-<div>Список объектов</div>
-{{#subjects}}
-    <div>
-        <b>{{subjectName}}</b>
-        <b>цена {{price}},</b>
-        <b>район: {{region}},</b>
-        <span>адрес: {{address}},</span>
-        <span>площадь: {{area}},</span>
-        <span>характеристики: {{info}},</span>
-        <span>{{media}}</span>
-        <div>
-<!--            <img src="/img/{{filename}}" alt="фото">-->
-            <p><img src="{{filename}}"  width="40" height="30" alt="{{subjectName}}"></p>
-        </div>
-
-        <form method="get" action="/reservation" >
-            <br><button type="submit"><a href="/reservation/{{IDSubject}}">Забронировать</a><</button></br>
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-            <input type="hidden" name="subjectForReserve" value="{{IDSubject}}" />
-        </form>
-
-    </div>
-{{/subjects}}
-
-<!--<img src="../../../uploads/temp.png">-->
-
-<!---->
-<!--КНОПКА ПЕРЕХОДА К ДОБАВЛЕНИЮ К НОВОМУ ОБЪЕКТУ-->
-<!---->
+<br>
+<br>
+<div>Список доступных объектов на выбранную дату:</div>
+<br>
+<table>
+    <tbody>
+    {{#subjects}}
+        <tr>
+            <th>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div>
+                                    <p><img src="{{filename}}"  width="160" height="100" alt="{{subjectName}}"></p>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <div>
+                                    <form method="get" action="/reservation" >
+                                        <br><button type="submit"><a href="/reservation/{{IDSubject}}">Забронировать</a><</button></br>
+                                        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                                        <input type="hidden" name="subjectForReserve" value="{{IDSubject}}" />
+                                    </form>
+                                </div>
+                            </th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th>
+            <th>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr><th align="left">{{subjectName}}</th></tr>
+                        <tr><th align="left"><b>цена: {{price}}</b></th></tr>
+                        <tr><th align="left">адрес: {{address}}</th></tr>
+                        <tr><th align="left"><b>район: {{region}}</b></th></tr>
+                        <tr><th align="left">характеристики: {{info}}</th></tr>
+                        <tr><th align="left">{{media}}</th></tr>
+                        <tr><th align="left">площадь: {{area}}</th></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th>
+        </tr>
+    {{/subjects}}
+    </tbody>
+</table>
 <br><button name="addNewObject" type="button"><a href="/add-new-object">Добавить новый объект</a></button></br>
-
-
 </body>
 </html>
 
