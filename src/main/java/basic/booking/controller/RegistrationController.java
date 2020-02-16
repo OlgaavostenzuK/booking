@@ -4,6 +4,7 @@ import basic.booking.domain.Role;
 import basic.booking.domain.User;
 import basic.booking.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,9 @@ import java.util.Map;
 public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
     public String login(Map<String, Object> model){
@@ -41,6 +45,7 @@ public class RegistrationController {
         }
 
         user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
 
         return "redirect:/login";
@@ -58,6 +63,7 @@ public class RegistrationController {
         if (userRepo.findAllByRoles(Role.ADMIN).size()==0) {
 
             user.setRoles(Collections.singleton(Role.ADMIN));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepo.save(user);
             return "redirect:/login";
 
