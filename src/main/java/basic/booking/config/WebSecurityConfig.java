@@ -31,15 +31,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/add-new-object","/reservation/*", "/admin-reestr", "/userList").authenticated()
-                .anyRequest().permitAll()
+                    .antMatchers("/add-new-object","/reservation/*", "/admin-reestr", "/userList").authenticated()
+                    .anyRequest().permitAll()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
                 .and()
-                .logout()
-                .permitAll();
+                    .logout()
+                    .permitAll();
     }
 
     @Override

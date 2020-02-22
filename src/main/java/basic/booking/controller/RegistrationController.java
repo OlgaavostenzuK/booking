@@ -30,9 +30,9 @@ public class RegistrationController {
         return "registration";
     }
 
-    @GetMapping("/sorry-admin")
-    public String sorryAdmin(){
-        return "sorry-admin";
+    @GetMapping("/error-admin")
+    public String errorAdmin(){
+        return "error-admin";
     }
 
     @PostMapping("/registration")
@@ -68,7 +68,7 @@ public class RegistrationController {
             return "redirect:/login";
 
         } else {
-            return "redirect:/sorry-admin";
+            return "redirect:/error-admin";
         }
     }
 }
