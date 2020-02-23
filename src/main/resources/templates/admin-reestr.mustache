@@ -1,56 +1,88 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
 <html>
+<head>
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 <body>
-<form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-    <input type="submit" value="Выход"/>
-</form>
-<br><a href="/add-new-object">Добавить новый объект</a></br>
-<br><a href="/userList">Просмотреть список пользователей</a></br>
-<br><a href="/">Перейти к общему реестру</a></br>
-<br> </br>
-<div>Показать бронирования</div>
-<form method="get" action="/admin-reestr" >
-        <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
-        <button name="filterShow" type="submit">Показать</button>
-</form>
-<br> </br>
-<div>Список доступных объектов на выбранную дату:</div>
-<br>
-<table>
-    <tbody>
-    {{#reserves}}
-        <tr>
-            <th>
-                <div>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <th>
-                                <p><img src="{{subject.filename}}"  width="160" height="100" alt="{{subject.subjectName}}"></p>
-                            </th>
-                        </tr>
-                        </tbody>
-                    </table>
+<div class="container">
+    <div class="d-flex justify-content-center ">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-center links">
+                    <form action="/logout" method="post">
+                        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                        <input type="submit" value="Выход"/>
+                    </form>
                 </div>
-            </th>
-            <th>
-                <div>
-                    <table>
-                        <tbody>
-                        <tr><th align="left" vertical-align="top">{{subject.subjectName}}</th></tr>
-                        <tr><th align="left" vertical-align="top"></th></tr>
-                        <tr><th align="left" vertical-align="top">цена: {{subject.price}}</th></tr>
-                        <tr><th align="left" vertical-align="top">адрес: {{subject.address}}</th></tr>
-                        <tr><th align="left" vertical-align="top">район: {{subject.region}}</th></tr>
-                        <tr><th align="left" vertical-align="top">забронировал пользователь:  {{user.username}}</th></tr>
-                        </tbody>
-                    </table>
+                <br>
+            </div>
+            <a href="/add-new-object">Добавить новый объект</a>
+            <a href="/userList">Просмотреть список пользователей</a>
+            <a href="/">Перейти к общему реестру</a>
+            <div class="form-group">
+                <h3>Показать бронирования</h3>
+            </div>
+            <form method="get" action="/admin-reestr" >
+                <div class="card-body">
+                    <div class="input-group form-group">
+                        <br><label wight="20" text-align="right">Дата:</label><input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="filterShow" value="Показать" class="btn float-right login_btn">
+                    </div>
                 </div>
-            </th>
-        </tr>
-    {{/reserves}}
-    </tbody>
-</table>
+            </form>
+            <div class="form-group">
+                <h3>Доступные объекты на выбранную дату</h3>
+            </div>
+            <table>
+                <tbody>
+                {{#reserves}}
+                    <tr>
+                        <th>
+                            <div>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <th>
+                                            <p><img src="{{subject.filename}}"  width="160" height="100" alt="{{subject.subjectName}}"></p>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </th>
+                        <th>
+                            <div >
+                                <table>
+                                    <tbody>
+                                    <tr><th align="left" vertical-align="top">{{subject.subjectName}}</th></tr>
+                                    <tr><th align="left" vertical-align="top"></th></tr>
+                                    <tr><th align="left" vertical-align="top">цена: {{subject.price}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">адрес: {{subject.address}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">район: {{subject.region}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">забронировал пользователь: {{user.username}}</th></tr>
+                                    <tr><th></th></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </th>
+                    </tr>
+                {{/reserves}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-

@@ -1,100 +1,125 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<!---->
-<!--КНОПКА ПЕРЕХОДА К АВТОРИЗАЦИИ-->
-<!---->
-<br><button name="login" type="button"><a href="/login">Вход</a></button></br>
-<br>
-<!---->
-<!--ФИЛЬТРЫ-->
-<!---->
-<form method="get" action="/" >
-<div>
-    Выберите нужную дату: <input type="date" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
-    <button name="filterShow" type="submit">Показать</button>
-</div>
-    <br>Цена не более:<input type="number" name="filterPrice" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}"></br>
-    <br>Район: <select name="filterRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">район:
-        <option></option>
-        <option>Адмиралтейский район</option>
-        <option>Василеостровский район</option>
-        <option>Выборгский район</option>
-        <option>Калининский район</option>
-        <option>Кировский район</option>
-        <option>Колпинский район</option>
-        <option>Красногвардейский район</option>
-        <option>Красносельский район</option>
-        <option>Кронштадтский район</option>
-        <option>Курортный район</option>
-        <option>Московский район</option>
-        <option>Невский район</option>
-        <option>Петроградский район</option>
-        <option>Петродворцовый район</option>
-        <option>Приморский район</option>
-        <option>Пушкинский район</option>
-        <option>Фрунзенский район</option>
-        <option>Центральный район</option>
-    </select></br>
-</form>
+<div class="container">
+    <div class="d-flex justify-content-center ">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-center links">
+                    <br><button name="login" type="button"><a href="/login">Вход</a></button></br>
+                </div>
+                <br>
+                <!--                <h3>Требуется авторизация</h3>-->
+            </div>
+            <form method="get" action="/" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
 
-<!---->
-<!--ПЕРЕЧЕНЬ ОБЪЕКТОВ-->
-<!---->
-<br>
-<br>
-<div>Список доступных объектов на выбранную дату:</div>
-<br>
-<table>
-    <tbody>
-    {{#subjects}}
-        <tr>
-            <th>
-                <div>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <th>
-                                    <p><img src="{{filename}}"  width="160" height="100" alt="{{subjectName}}"></p>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <div>
-                                    <form method="get" action="/reservation" >
-                                        <br><a href="/reservation/{{IDSubject}}">Забронировать</a></br>
-                                        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-                                        <input type="hidden" name="subjectForReserve" value="{{IDSubject}}" />
-                                    </form>
-                                </div>
-                            </th>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                <div class="card-body">
+                    <div class="input-group form-group">
+                        <br><label wight="20" text-align="right">Дата:</label><input type="date" class="form-control" name="wanteddate" placeholder="выберите дату" value="{{#wanteddate}}{{wanteddate}}{{/wanteddate}}"/>
+                        <!--                        <button name="filterShow" type="submit">Показать</button>-->
+                    </div>
+                    <div class="input-group form-group">
+                        <br><label wight="20" text-align="right">Цена:</label><input type="number" class="form-control" name="filterPrice" value="{{#filterPrice}}{{filterPrice}}{{/filterPrice}}"></br>
+                    </div>
+                    <div class="input-group form-group">
+                        <br><label wight="20" text-align="right">Район:</label><select name="filterRegion" class="form-control" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">район:
+                        <option></option>
+                        <option>Адмиралтейский район</option>
+                        <option>Василеостровский район</option>
+                        <option>Выборгский район</option>
+                        <option>Калининский район</option>
+                        <option>Кировский район</option>
+                        <option>Колпинский район</option>
+                        <option>Красногвардейский район</option>
+                        <option>Красносельский район</option>
+                        <option>Кронштадтский район</option>
+                        <option>Курортный район</option>
+                        <option>Московский район</option>
+                        <option>Невский район</option>
+                        <option>Петроградский район</option>
+                        <option>Петродворцовый район</option>
+                        <option>Приморский район</option>
+                        <option>Пушкинский район</option>
+                        <option>Фрунзенский район</option>
+                        <option>Центральный район</option>
+                    </select></br>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="filterShow" value="Показать" class="btn float-right login_btn">
+                    </div>
                 </div>
-            </th>
-            <th>
-                <div>
-                    <table>
-                        <tbody>
-                        <tr><th align="left" vertical-align="top">{{subjectName}}</th></tr>
-                        <tr><th align="left" vertical-align="top"></th></tr>
-                        <tr><th align="left" vertical-align="top">цена: {{price}}</th></tr>
-                        <tr><th align="left" vertical-align="top">адрес: {{address}}</th></tr>
-                        <tr><th align="left" vertical-align="top">район: {{region}}</th></tr>
-                        <tr><th align="left" vertical-align="top">характеристики: {{info}}</th></tr>
-                        <tr><th align="left" vertical-align="top">{{media}}</th></tr>
-                        <tr><th align="left" vertical-align="top">площадь: {{area}}</th></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </th>
-        </tr>
-    {{/subjects}}
-    </tbody>
-</table>
+            </form>
+            <div class="form-group">
+                <h3>Доступные объекты на выбранную дату</h3>
+            </div>
+            <table>
+                <tbody>
+                {{#subjects}}
+                    <tr>
+                        <th>
+                            <div>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <th>
+                                            <p><img src="{{filename}}"  width="160" height="100" alt="{{subjectName}}"></p>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div>
+                                                <form method="get" action="/reservation" >
+                                                    <br><a href="/reservation/{{IDSubject}}">Забронировать</a></br>
+                                                    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                                                    <input type="hidden" name="subjectForReserve" value="{{IDSubject}}" />
+                                                </form>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </th>
+                        <th>
+                            <div >
+                                <table>
+                                    <tbody>
+                                    <tr><th align="left" vertical-align="top">{{subjectName}}</th></tr>
+                                    <tr><th align="left" vertical-align="top"></th></tr>
+                                    <tr><th align="left" vertical-align="top">цена: {{price}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">адрес: {{address}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">район: {{region}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">характеристики: {{info}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">{{media}}</th></tr>
+                                    <tr><th align="left" vertical-align="top">площадь: {{area}}</th></tr>
+                                    <tr><th></th></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </th>
+                    </tr>
+                {{/subjects}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+
 

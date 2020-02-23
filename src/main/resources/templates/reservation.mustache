@@ -1,15 +1,40 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<body>
-Выбрать датy:
-<form method="post">
-    <input type="date" name="wanteddate"/>
-    <input type="hidden" name="IDSubjectForReserve" value="{{IDSubjectForReserve}}"/>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+<html>
+<head>
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <input type="submit" value="Подтвердить!"/>
-</form>
-<br></br>
-<a href="/">Вернуться к реестру</a>
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center ">
+        <div class="card">
+            <form method="post" >
+                <div class="card-body">
+                    <div class="input-group form-group">
+                        <br><label wight="20" text-align="right">Дата:</label>
+                        <input type="date" name="wanteddate"/>
+                        <input type="hidden" name="IDSubjectForReserve" value="{{IDSubjectForReserve}}"/>
+                        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Бронировать" class="btn float-right login_btn">
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-center links">
+                <a href="/">В реестр</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

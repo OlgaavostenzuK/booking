@@ -1,52 +1,95 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
 <html>
+<head>
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 <body>
-<!---->
-<!--Форма ввода информации об объекте-->
-<!---->
-<div>Информация об объекте:
-    <form method="post" enctype="multipart/form-data">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-        <br><input type="text" name="chooseSubjectName" placeholder="название"></br>
-        <br><input type="number" name="choosePrice" placeholder="цена"></br>
-        <br><select name="chooseRegion" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
-            <option>Адмиралтейский район</option>
-            <option>Василеостровский район</option>
-            <option>Выборгский район</option>
-            <option>Калининский район</option>
-            <option>Кировский район</option>
-            <option>Колпинский район</option>
-            <option>Красногвардейский район</option>
-            <option>Красносельский район</option>
-            <option>Кронштадтский район</option>
-            <option>Курортный район</option>
-            <option>Московский район</option>
-            <option>Невский район</option>
-            <option>Петроградский район</option>
-            <option>Петродворцовый район</option>
-            <option>Приморский район</option>
-            <option>Пушкинский район</option>
-            <option>Фрунзенский район</option>
-            <option>Центральный район</option>
-        </select></br>
-        <br><input type="text" name="chooseAddress" placeholder="адрес"></br>
-        <br><input type="number" name="chooseArea" placeholder="площадь"></br>
-        <br><input type="text" name="chooseInfo" placeholder="характеристики"></br>
-        <br><select name="chooseMedia">
-            <option>мультимедиа в наличии</option>
-            <option>мультимедиа отсутствует</option>
-        </select></br>
-        <br><input type="file" name="file" placeholder="фото"></br>
+<div class="container">
+    <div class="d-flex justify-content-center ">
+        <div class="card">
+            <div class="card-header">
+                <br>
+                <h3>Информация об объекте:</h3>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                <div class="card-body">
+                    <div class="input-group form-group">
+                        <br><input type="text" class="form-control" name="chooseSubjectName" placeholder="название">
+                    </div>
+                    <div class="input-group form-group">
+                        <br><input type="number" class="form-control" name="choosePrice" placeholder="цена">
+                    </div>
+                    <div class="input-group form-group">
+                        <br><select name="chooseRegion" class="form-control" placeholder="район" value="{{#filterRegion}}{{filterRegion}}{{/filterRegion}}">
+                        <option>Адмиралтейский район</option>
+                        <option>Василеостровский район</option>
+                        <option>Выборгский район</option>
+                        <option>Калининский район</option>
+                        <option>Кировский район</option>
+                        <option>Колпинский район</option>
+                        <option>Красногвардейский район</option>
+                        <option>Красносельский район</option>
+                        <option>Кронштадтский район</option>
+                        <option>Курортный район</option>
+                        <option>Московский район</option>
+                        <option>Невский район</option>
+                        <option>Петроградский район</option>
+                        <option>Петродворцовый район</option>
+                        <option>Приморский район</option>
+                        <option>Пушкинский район</option>
+                        <option>Фрунзенский район</option>
+                        <option>Центральный район</option>
+                    </select></br>
+                    </div>
+                    <div class="input-group form-group">
+                        <br><input type="text" class="form-control" name="chooseAddress" placeholder="адрес">
+                    </div>
+                    <div class="input-group form-group">
+                        <br><input type="number" class="form-control" name="chooseArea" placeholder="площадь">
+                    </div>
+                    <div class="input-group form-group">
+                        <br><input type="text" class="form-control" name="chooseInfo" placeholder="характеристики">
+                    </div>
+                    <div class="input-group form-group">
+                        <br><select name="chooseMedia" class="form-control">
+                        <option>мультимедиа в наличии</option>
+                        <option>мультимедиа отсутствует</option>
+                    </select></br>
+                    </div>
+                    <div >
+                        <br><input type="file" name="file" placeholder="фото">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="submit" name="publishSubject" value="Опубликовать" class="btn float-right login_btn">
+                    </div>
+                </div>
+            </form>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    <a href="/admin-reestr">Вернуться в реестр администратора</a>
+                </div>
+                <div class="d-flex justify-content-center links">
+                    <a href="/">Перейти к общему реестру</a>
+                </div>
 
-        <br>
-        <button name="publishSubject" type="submit">Опубликовать</button>
+            </div>
 
-        <button name="clear" type="reset">Очистить</button>
-        </br>
-        <br></br>
-        <br><a href="/admin-reestr">Вернуться в ЛК администратора</a></br>
-        <br><a href="/">Перейти к общему реестру</a></br>
-    </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+
 
